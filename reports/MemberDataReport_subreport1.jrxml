@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MemberDataReport_subreport1" language="groovy" pageWidth="595" pageHeight="54" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a01f226b-d6f2-476a-8fd7-7ff784d37891">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Lended Books" uuid="2deb86ab-1d4c-4753-8962-35172ed164c3">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+	* from lendbook l
+INNER JOIN
+	book b
+ON
+	l.book_isbn=b.isbn]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="book_isbn" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="member_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="lend_date" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="due_date" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="sysuser_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="returned_date" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="fines_paid" class="java.lang.Double">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="reminders" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="stat" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="isbn" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="author_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="category_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="language" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="initqty" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="availableqty" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="Lending History" uuid="567e127a-e8ff-4170-85d1-a376e92e84cb">
+		<parameter name="mem_id" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     lendbook.`id` AS lendbook_id,
+     lendbook.`member_id` AS lendbook_member_id,
+     lendbook.`book_isbn` AS lendbook_book_isbn,
+     lendbook.`lend_date` AS lendbook_lend_date,
+     lendbook.`due_date` AS lendbook_due_date,
+     lendbook.`returned_date` AS lendbook_returned_date,
+     lendbook.`fines_paid` AS lendbook_fines_paid,
+     lendbook.`reminders` AS lendbook_reminders,
+     lendbook.`stat` AS lendbook_stat,
+     book.`isbn` AS book_isbn,
+     book.`name` AS book_name
+FROM
+     `lendbook` lendbook INNER JOIN `book` book ON lendbook.`book_isbn` = book.`isbn`
+WHERE
+     lendbook.member_id=$P{mem_id}]]>
+		</queryString>
+		<field name="lendbook_id" class="java.lang.Integer"/>
+		<field name="lendbook_member_id" class="java.lang.Integer"/>
+		<field name="lendbook_book_isbn" class="java.lang.String"/>
+		<field name="lendbook_lend_date" class="java.lang.String"/>
+		<field name="lendbook_due_date" class="java.lang.String"/>
+		<field name="lendbook_returned_date" class="java.lang.String"/>
+		<field name="lendbook_fines_paid" class="java.lang.Double"/>
+		<field name="lendbook_reminders" class="java.lang.Integer"/>
+		<field name="lendbook_stat" class="java.lang.Boolean"/>
+		<field name="book_isbn" class="java.lang.String"/>
+		<field name="book_name" class="java.lang.String"/>
+		<variable name="returned" class="java.lang.String">
+			<variableExpression><![CDATA[($F{lendbook_returned_date}).equals(null) ? "Not Returned" : $F{lendbook_returned_date}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="sub_para_mem_id" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+	* from lendbook l
+INNER JOIN
+	book b
+ON
+	l.book_isbn=b.isbn]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="book_isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="member_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lend_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="due_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sysuser_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returned_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fines_paid" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reminders" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stat" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="author_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="language" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="initqty" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="availableqty" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="54" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="5" y="0" width="585" height="54" uuid="28cc2b36-bce4-4626-886b-f406a639e48c">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} == 1 ]]></printWhenExpression>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Lending History" uuid="5205a29c-b99b-472d-8e67-9ffa1d149ba6">
+						<datasetParameter name="mem_id">
+							<datasetParameterExpression><![CDATA[$P{sub_para_mem_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="55" uuid="36e99af9-39a0-447d-8a23-138b1fe11f96">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="55" height="30" uuid="a12e67f8-d9ae-433f-a8e1-dd7c0c0f17fd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Lend ID]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="55" height="30" uuid="265616f8-35da-4a85-9ccf-26ea1baf484d"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lendbook_id}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="90058f86-32d7-435c-bbf0-3be705991e20">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="232ab9ae-cdf3-479c-959e-525234e4fc94"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Book ISBN]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="1db475bb-ca8a-4ba7-8b1f-55a0073e59f6"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lendbook_book_isbn}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="130" uuid="d0d9eaa1-6f4e-4ad8-91e6-8777e4cc1a7a">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="130" height="30" uuid="8371f19e-67eb-421b-8bfb-fe0df86eefb2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Book Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="130" height="30" uuid="e3d0c1ef-3ec5-406b-b4db-0e4de9e0b32f"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{book_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="67" uuid="b31c4d4d-df88-487c-8165-1f69d38bdeea">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="67" height="30" uuid="a5b2ab66-2353-4acf-a7f4-502a5e6351b8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Lend Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="67" height="30" uuid="e56ca34e-c5e4-4759-aa91-14a22c692957"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lendbook_lend_date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="67" uuid="1b113704-ef7e-474c-8a5e-b4259e137c61">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="67" height="30" uuid="2d786077-4039-4b7b-a8eb-df64949bd721"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Due Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="67" height="30" uuid="cb0b18ea-8e5c-4469-9fc7-9132cbe41d60"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lendbook_due_date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="0fe34a74-f0f7-4748-8e0e-dd04fc777fa0">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="939aaaa8-c258-4051-b6a2-3655da6cae8f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Returned]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="30" uuid="00441fec-ff6c-45cf-919f-90e6e14488aa"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{returned}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="1a0c8b2e-a770-4dfc-bafa-0d3abf5c43dd">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="30" uuid="675c490e-fba2-4332-8ecc-c56410f961f2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fines]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="9e0cad16-c87a-4a16-b7af-4621bfb1884d"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lendbook_fines_paid}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="65" uuid="b79b10ed-344f-4385-84de-8a4d849d2a07">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="65" height="30" uuid="e85c1821-1a0f-4279-bba5-94eca96aaf27"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Reminders]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="65" height="30" uuid="9cbce4b7-2806-4ea0-973e-ff9cac9665a8"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lendbook_reminders}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

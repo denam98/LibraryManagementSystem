@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employeeListReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fb35250c-60f9-4499-8113-aa6b7bc01d65">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.background.image" value="C:\Users\B.M.D.C.Bandara\Downloads\wp6751611-white-gradient-wallpapers.jpg"/>
+	<property name="ireport.background.image.properties" value="true,true,0.25,-8,-8,0,0,2896,1816"/>
+	<queryString>
+		<![CDATA[select e.*,s.*,r.* from employee e inner join systemuser s on e.id=s.employee_id inner join role r on r.id=e.role_id]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="role_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nic" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="phone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dob" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="home" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="zone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="city" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="postalcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stat" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dateemployeed" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="employee_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="username" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="password" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="roletype" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="var_name" class="java.lang.String">
+		<variableExpression><![CDATA[$F{fname} + " " + $F{lname}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="var_address" class="java.lang.String">
+		<variableExpression><![CDATA[$F{home}+","+$F{street}+","+$F{zone}+","+$F{city}+" "+$F{postalcode}]]></variableExpression>
+	</variable>
+	<variable name="var_stat" class="java.lang.String">
+		<variableExpression><![CDATA[($F{stat}) ? "Active" : "Inactive"]]></variableExpression>
+	</variable>
+	<background>
+		<band height="842" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="595" height="842" uuid="a09b030b-10f1-4811-8d23-bc0720cbd71e"/>
+				<imageExpression><![CDATA["C:\\Users\\B.M.D.C.Bandara\\Downloads\\wp6751611-white-gradient-wallpapers.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="595" height="75" forecolor="#FFFFFF" backcolor="#3366FF" uuid="a45316c2-4df0-4f2d-a9bf-f93b3e9dc111"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="30" isBold="true" isItalic="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[City Library]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="595" height="16" forecolor="#FFFFFF" uuid="54ffe60d-afff-4ddf-83cf-311c1309e5f0"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[NO. 240/B, GALAHITITYAWA, GANEMULLA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="54" width="595" height="15" forecolor="#FFFFFF" uuid="424674eb-694b-4aff-87b2-488cf43ac081"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TEL : 0763049683 / FAX : 0774416115]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="130" splitType="Stretch">
+			<textField pattern="h.mm a">
+				<reportElement x="36" y="69" width="97" height="20" uuid="14515e5a-9629-4742-9a08-817d71031f0a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="36" y="54" width="146" height="15" uuid="20efd29e-38b8-4014-ad31-ecc52932af63"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="185" y="21" width="226" height="25" uuid="b35646b9-c165-4749-aba9-2b07b7bd9ed2"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee List Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="44" height="20" uuid="c1ad4133-ce81-4e27-8db7-0e4e39b07ff8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMP ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="0" width="111" height="20" uuid="ae05b2ce-dd07-46ae-86b0-b94c2e38ce27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="80" height="20" uuid="5e5e5e24-cc8a-4ece-8411-b6211389c77f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="0" width="99" height="20" uuid="6cd25b26-31bf-439b-a163-5a6c2b98b7fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="0" width="78" height="20" uuid="743919f6-e89b-4377-b9da-aa59d42bd8ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mobile No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="0" width="49" height="20" uuid="2e55751a-1e3e-44ac-af02-83fa190f67c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="52" height="20" uuid="5f805b06-57fc-4243-93ee-34896336f9cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="0" width="83" height="20" uuid="0a6e5c2b-c441-4319-b1e8-72656d32613d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOB]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="90" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="44" height="20" uuid="35dfb7bd-10c7-451e-b9a9-f3646f3c998a"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="0" width="80" height="20" uuid="b11532f8-24b5-416a-b4dc-68420ca5e009"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="0" width="111" height="90" uuid="fe527f83-ae45-4b81-af66-b3e6a214621a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{var_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="313" y="0" width="98" height="90" uuid="774e814c-182d-4581-8cae-f281af6904ed"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{var_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="0" width="78" height="20" uuid="6faaea19-2732-4496-a45a-14cd56ff129a"/>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="49" height="20" uuid="a1a789f4-676f-42e6-a41f-7af742476070"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="52" height="20" uuid="9d06b0ee-8352-41cd-aaeb-b8c852bca709"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{var_stat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="512" y="0" width="83" height="20" uuid="d054be50-423d-4d2d-bdb2-60c449627520"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="25" width="155" height="14" forecolor="#6699FF" uuid="656fb5de-638f-48a8-bd28-c29b56dc3a74"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Designed by DenSoft (Pvt) Ltd.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="25" width="274" height="14" forecolor="#6699FF" uuid="7e2fa55c-0f8e-446c-a2f0-00e93e640f60"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[denamsoftCo@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="25" width="146" height="14" forecolor="#6699FF" uuid="05d5675f-d4a1-4b64-8af9-5dac4241f4a2"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[mobile : 076-3049683]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="475" y="5" width="80" height="20" uuid="a995d1d2-7a6f-43a8-a3aa-f56b30ef0f65"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="555" y="5" width="40" height="20" uuid="6dc94d12-1c5c-4ad8-8e7e-3bcf5577994c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

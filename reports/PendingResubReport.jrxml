@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PendingResubReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="df43aba8-d879-48e4-9326-037f31a9a126">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select *,l.id as lid from lendbook l inner join member m on l.member_id=m.id inner join book b on l.book_isbn=b.isbn where l.stat=1]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="book_isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="member_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lend_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="due_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sysuser_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returned_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fines_paid" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reminders" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stat" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nic" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="phone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="home" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="zone" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="city" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="postalcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="author_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="language" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="initqty" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="availableqty" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lid" class="java.lang.Integer"/>
+	<variable name="name" class="java.lang.String">
+		<variableExpression><![CDATA[$F{fname} + " " + $F{lname}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="842" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="-1" y="0" width="596" height="842" uuid="f5364ab2-384c-4d3b-b4ba-7c049b0e9c2a"/>
+				<imageExpression><![CDATA["C:\\Users\\B.M.D.C.Bandara\\Downloads\\wp6751611-white-gradient-wallpapers.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="595" height="75" forecolor="#FFFFFF" backcolor="#3366FF" uuid="52931974-8f7d-470d-a41f-7fd24083dd2d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="30" isBold="true" isItalic="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[City Library]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="595" height="16" forecolor="#FFFFFF" uuid="5e2ae3c3-0151-4fc7-94fa-fcc10d84e156"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[NO. 240/B, GALAHITITYAWA, GANEMULLA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="54" width="595" height="15" forecolor="#FFFFFF" uuid="5f83ab50-7cc3-4546-bab4-4a60f8c370ce"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TEL : 0763049683 / FAX : 0774416115]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="21" width="290" height="25" uuid="18c03196-1a20-499e-8193-57bbb29dbb7e"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pending Resubmission Report]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="36" y="69" width="97" height="20" uuid="6a8bf822-78ea-478c-92a0-755c51d1d58b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="36" y="54" width="146" height="15" uuid="b1e80aed-1282-48be-ae4b-4b492327b9c1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="0" width="57" height="20" uuid="8c7abdce-82f3-448a-a43b-8bf3b811b52f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lend ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="0" width="85" height="20" uuid="b5985973-66ff-4912-a70c-fe7b686d8d61"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Book ISBN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="85" height="20" uuid="7d997514-7f6e-4e0e-9592-0e95dbd55d7a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Book Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="0" width="55" height="20" uuid="f11b6cf5-56a2-4cc8-9fff-c7b0eb5e9639"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Member ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="0" width="70" height="20" uuid="7f49d5db-d07d-4b77-a813-63fe251d8461"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lend Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="513" y="0" width="70" height="20" uuid="ee12fd1c-dfdd-498a-a445-586c78883604"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Due Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="0" width="85" height="20" uuid="79de4466-0630-4bca-92c9-be2d4b8b4d0e"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mobile No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="0" width="68" height="20" uuid="d7c105cc-342a-4baa-90e3-797f5f1a0205"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mem.Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="8" y="0" width="57" height="20" uuid="ffb8282e-62eb-4dc9-9f4c-a86c8fe22cbb"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="0" width="85" height="20" uuid="167b286d-4958-4b60-ad4e-f5171bf055ae"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isbn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="85" height="57" uuid="dc07c4fc-54c3-4d4e-9b2d-61d946b3e890"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="0" width="55" height="20" uuid="c1e5fe98-baaa-43fe-a915-0cd17f8ab796"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{member_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="0" width="70" height="20" uuid="cca87ed3-51c4-4260-b12b-2b1d3ce79c12"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lend_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="513" y="0" width="70" height="20" uuid="dad6dd97-e135-402d-984b-0757217481c0"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{due_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="0" width="85" height="20" uuid="3b61759b-172f-4244-9bec-d7ca7116126a"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="0" width="68" height="57" uuid="93f4eccb-8659-42de-8c94-683a839855ce"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="165" y="25" width="273" height="14" forecolor="#6699FF" uuid="e7ed6e3f-6d39-4855-b87a-e1e8ed331f09"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[denamsoftCo@gmail.com]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="555" y="5" width="40" height="20" uuid="a1cdcbf7-c544-4c3e-93ff-1028f19fa270"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="438" y="25" width="146" height="14" forecolor="#6699FF" uuid="f2dd470b-6412-4481-8b36-c4236b87f80a"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[mobile : 076-3049683]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="25" width="155" height="14" forecolor="#6699FF" uuid="42de99fc-36ca-4f1d-80a6-dfb99dfc1b28"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Designed by DenSoft (Pvt) Ltd.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="475" y="5" width="80" height="20" uuid="93375337-7bce-4c05-bb4d-fb29a18a19a5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
